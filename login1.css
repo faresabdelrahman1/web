@@ -121,6 +121,12 @@ a:hover, .submit-btn:hover {
 
 /* 📱 شاشات صغيرة (موبايل) */
 @media (max-width: 480px) {
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
     .login-box {
         padding: 20px 15px;
     }
