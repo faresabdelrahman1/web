@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOTORS EXCLUSIVE</title>
+  <link rel="icon" type="image/x-icon" href="favicon.png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Playfair Display', serif;
+      color: white;
+      background-color: #000;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background-color: rgba(0, 0, 0, 0.7);
+      position: absolute;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      position: relative;
+    }
+
+    .dropdown {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .dropdown span {
+      font-weight: bold;
+      transition: text-shadow 0.3s ease;
+    }
+
+    .arrow {
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .arrow.rotate {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 30px;
+      left: 0;
+      background-color: #111;
+      border: 1px solid #333;
+      padding: 0 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 20;
+      min-width: 120px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+    }
+
+    .dropdown-content.show {
+      max-height: 500px;
+      opacity: 1;
+      padding: 10px;
+    }
+
+    .dropdown-content a {
+      color: white;
+      text-decoration: none;
+      padding: 5px 10px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .dropdown-content a::before {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #aee1ff;
+      transition: width 0.3s ease;
+    }
+
+    .dropdown-content a:hover::before {
+      width: 100%;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: bold;
+      transition: text-shadow 0.3s ease;
+    }
+
+    /* === Strong Neon Glow Effect === */
+    nav a:hover,
+    .dropdown span:hover,
+    .dropdown-content a:hover {
+      color: #aee1ff;
+      text-shadow:
+        0 0 5px #aee1ff,
+        0 0 10px #aee1ff,
+        0 0 20px #aee1ff,
+        0 0 40px #00bfff,
+        0 0 80px #00bfff;
+    }
+
+    .hero {
+      background: url("https://cdn.prod.website-files.com/661d6e0d2e84ef511db18f17/67ee7643950e15a32927ec77_bentley-gt-hero.avif") no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-left: 60px;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 600px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      padding: 10px 25px;
+      background-color: #8faecf;
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      /* Adding transition for smooth effect */
+    }
+
+    /* === Glow Effect for the Button === */
+    .btn:hover {
+      color: #fff;
+      background-color: #00bfff;
+      text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff;
+      box-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo"><em>MOTORS EXCLUSIVE</em></div>
+    <nav>
+      <div class="dropdown" id="dropdownToggle">
+        <span><em>MODELS</em></span>
+        <span class="arrow" id="arrow">&#9660;</span>
+        <div class="dropdown-content" id="dropdownMenu">
+          <a href="cars.html"><em>Bentley</em></a>
+          <a href="cars.html"><em>Mercedes</em></a>
+          <a href="cars.html"><em>BMW</em></a>
+          <a href="cars.html"><em>Audi</em></a>
+          <a href="cars.html"><em>Porsche</em></a>
+        </div>
+      </div>
+      <a href="login1.html"><em>Login</em></a>
+      <a href="about.html"><em>About</em></a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1><em>New 2025 Luxury and Sport Cars</em></h1>
+      <p><em>Discover luxury and performance like never before.</em></p>
+      <a href="cars.html" class="btn"><em>DISCOVER NOW</em></a>
+    </div>
+  </section>
+
+  <script>
+    const toggle = document.getElementById("dropdownToggle");
+    const menu = document.getElementById("dropdownMenu");
+    const arrow = document.getElementById("arrow");
+
+    toggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      menu.classList.toggle("show");
+      arrow.classList.toggle("rotate");
+    });
+
+    window.addEventListener("click", (e) => {
+      if (!e.target.closest(".dropdown")) {
+        menu.classList.remove("show");
+        arrow.classList.remove("rotate");
+      }
+    });
+  </script>
+</body>
+
+</html>

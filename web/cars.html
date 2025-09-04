@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOTORS EXCLUSIVE</title>
+  <link rel="icon" type="image/x-icon" href="logo.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Playfair Display', serif;
+      color: white;
+      background-color: #000;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 60px;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .car {
+      position: relative;
+      cursor: pointer;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .car img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .car:hover {
+      transform: scale(1.05);
+    }
+
+    .car-details {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .car:hover .car-details {
+      opacity: 1;
+    }
+
+    .car-details a {
+      color: #8faecf;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .car-details a:hover {
+      color: #fff;
+    }
+
+    .btn {
+      padding: 10px 25px;
+      background-color: #8faecf;
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      color: #fff;
+      background-color: #00bfff;
+      text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff;
+      box-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff;
+    }
+
+    .footer {
+      margin-top: auto;
+      padding: 30px 0;
+      display: flex;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="logo"><em>MOTORS EXCLUSIVE</em></div>
+  </header>
+
+  <section class="gallery" id="car-gallery"></section>
+
+  <footer class="fo oter">
+    <a href="index.html" class="btn"><em>BACK TO HOME</em></a>
+  </footer>
+
+  <script>
+    const cars = [
+      {
+        name: "Ferrari 812 GTS",
+        image: "https://cdn.prod.website-files.com/661d6e0d2e84ef511db18f17/66bb37359da445ac4d752aab_812GTS%20Grey%202023-12%20Nr.836-3%20Insta%20-%20Copy%20copy.avif"
+      },
+      {
+        name: "Maserati MC21",
+        image: "https://cdn.prod.website-files.com/661d6e0d2e84ef511db18f17/67fcc2b837fecb58d68fa510_679ca4db19494fc8775a0ccb_6797a956e4b318b3c0ca64a2_Maserati%252520Cielo%252520WhiteSoft%2525202023-09%252520Nr.1017-6%252520copy.avif"
+      },
+      {
+        name: "Lamborghini SVJ",
+        image: "https://cdn.prod.website-files.com/661d6e0d2e84ef511db18f17/67fcc2b28763f089841e7a3c_679ca4d679354281336c3f6e_67968f44cbc4849c83ad6cb5_Lamborghini_SVJ_NR851_1.avif"
+      },
+      {
+        name: "Mercedes-AMG GT63S-E",
+        image: "https://cdn.prod.website-files.com/661d6e0d2e84ef511db18f17/67fcc2c091a4a8b86e9e9fc3_679ca4e26d44347a43b2c932_6797af4c10ec22b94ba61d42_GT63s%252520Green%252520Nr.875-1.avif"
+      },
+      {
+        name: "Mercedes-AMG G63",
+        image: "https://cdn.prod.website-files.com/661d6e0d2e84ef511db18f17/67fcc2bc6ad91b95519f77b3_679ca4df49a2a0db8e8f5c03_67967d9a0ad59049d76b804c_MAN09438-Enhanced-NR%252520copy.avif"
+      },
+      {
+        name: "Rolls-Royce Phantom EWB Pulse Edition",
+        image: "https://cdn.prod.website-files.com/661d6e0d2e84ef511db18f17/679ca4ea1c2b2d53ace25791_677f9d37a50f301c2c780015_66bb207349905990b2bdbf40_pha%252520Nr.938%2525201.avif"
+      },
+      {
+        name: "Ferrari 296 GTB",
+        image: "https://cdn.prod.website-files.com/661d6e0d2e84ef511db18f17/67fcc2ac0deaf0fe09afe96a_67f8ed2eb4b0662a8ed8143a_Ferrari%2520296GTB%252005%2520BG.avif"
+      },
+      {
+        name: "Maserati MC20",
+        image: "https://cdn.prod.website-files.com/661d6e0d2e84ef511db18f17/66bc677dcebef010eac4a29d_Cielo%20yellow%202023-12%20Nr.1028-27%20Insta%20copy.avif"
+      },
+      {
+        name: "Bentley GT MY2025",
+        image: "https://cdn.prod.website-files.com/661d6e0d2e84ef511db18f17/67fcc2ac4f07fb1c28daf38c_67f8ca4cb961c2fe1d809bef_GTC%2520Black%25202025-03%2520Nr.1137-1%2520kopie.avif"
+      },
+      {
+        name: "Lamborghini Aventador Ultimae",
+        image: "https://cdn.prod.website-files.com/661d6e0d2e84ef511db18f17/67fcc2b20eec7d6785f84077_679cf23244100f14836816d7_Aventador%2520Final%2520Edition%252002%2520BG.avif"
+      },
+      {
+        name: "Porsche 992 Turbo",
+        image: "https://cdn.prod.website-files.com/661d6e0d2e84ef511db18f17/67fcc2c123175852bee73282_67ee8baac72292291d5907bf_Porsche992%2520Black%25202024-09%2520Nr.1062-2%2520BG.avif"
+      },
+      {
+        name: "Mercedes GLE 63",
+        image: "https://cdn.prod.website-files.com/661d6e0d2e84ef511db18f17/678d55a35ec190519efc0bfd_MAN09410-Enhanced-NR%20kopie_plaket%20kopie.avif"
+      }
+    ];
+
+    const gallery = document.getElementById('car-gallery');
+
+    cars.forEach(car => {
+      const carDiv = document.createElement('div');
+      carDiv.classList.add('car');
+      carDiv.innerHTML = `
+        <img src="${car.image}" alt="${car.name}">
+        <div class="car-details">
+          <a href="car-detail.html" onclick="viewDetails('${car.name}', '${car.image}')"><em>View Details</em></a>
+        </div>
+      `;
+      gallery.appendChild(carDiv);
+    });
+
+    function viewDetails(name, image) {
+      localStorage.setItem('carName', name);
+      localStorage.setItem('carImage', image);
+    }
+  </script>
+
+</body>
+
+</html>
