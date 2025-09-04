@@ -7,16 +7,18 @@
 
 body {
     background: linear-gradient(120deg, #2980b9, #8e44ad);
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px;
 }
 
 .login-box {
     position: relative;
-    width: 350px;
-    padding: 40px;
+    width: 100%;
+    max-width: 400px; /* أقصى عرض */
+    padding: 30px 20px;
     background: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
@@ -24,8 +26,9 @@ body {
 }
 
 .login-box h2 {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     text-align: center;
+    font-size: 1.5rem;
 }
 
 .user-box {
@@ -37,7 +40,7 @@ body {
     padding: 10px 0;
     font-size: 16px;
     color: white;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     border: none;
     border-bottom: 1px solid #fff;
     background: transparent;
@@ -58,12 +61,11 @@ body {
 .user-box input:valid~label,
 .user-box input:focus~label {
     top: -20px;
-    left: 0;
     color: #03e9f4;
     font-size: 12px;
 }
 
-a {
+a, .submit-btn {
     position: relative;
     display: inline-block;
     padding: 10px 20px;
@@ -72,11 +74,12 @@ a {
     text-decoration: none;
     overflow: hidden;
     transition: 0.5s;
-    margin-top: 20px;
+    margin-top: 15px;
     border: 1px solid #03e9f4;
+    text-align: center;
 }
 
-a:hover {
+a:hover, .submit-btn:hover {
     background: #03e9f4;
     color: #fff;
     box-shadow: 0 0 5px #03e9f4,
@@ -85,97 +88,8 @@ a:hover {
         0 0 100px #03e9f4;
 }
 
-a span {
-    position: absolute;
-    display: block;
-}
-
-a span:nth-child(1) {
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #03e9f4);
-    animation: btn-anim1 1s linear infinite;
-}
-
-a span:nth-child(2) {
-    top: -100%;
-    right: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(180deg, transparent, #03e9f4);
-    animation: btn-anim2 1s linear infinite;
-    animation-delay: 0.25s;
-}
-
-a span:nth-child(3) {
-    bottom: 0;
-    right: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(270deg, transparent, #03e9f4);
-    animation: btn-anim3 1s linear infinite;
-    animation-delay: 0.5s;
-}
-
-a span:nth-child(4) {
-    bottom: -100%;
-    left: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(360deg, transparent, #03e9f4);
-    animation: btn-anim4 1s linear infinite;
-    animation-delay: 0.75s;
-}
-
-@keyframes btn-anim1 {
-    0% {
-        left: -100%;
-    }
-
-    50%,
-    100% {
-        left: 100%;
-    }
-}
-
-@keyframes btn-anim2 {
-    0% {
-        top: -100%;
-    }
-
-    50%,
-    100% {
-        top: 100%;
-    }
-}
-
-@keyframes btn-anim3 {
-    0% {
-        right: -100%;
-    }
-
-
-    100% {
-        right: 100%;
-    }
-}
-
-@keyframes btn-anim4 {
-    0% {
-        bottom: -100%;
-    }
-
-    50%,
-    100% {
-        bottom: 100%;
-    }
-}
-
 .signup-link {
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin-top: 15px;
     text-align: center;
     font-size: 14px;
     color: #ccc;
@@ -185,7 +99,6 @@ a span:nth-child(4) {
     color: #03e9f4;
     text-decoration: none;
 }
-
 .signup-link a:hover {
     text-decoration: underline;
 }
@@ -193,48 +106,30 @@ a span:nth-child(4) {
 .form-actions {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-top: 20px;
-    flex-wrap: wrap;
-}
-
-.submit-btn {
-    position: relative;
-    display: inline-block;
-    padding: 10px 20px;
-    color: #03e9f4;
-    font-size: 16px;
-    text-decoration: none;
-    overflow: hidden;
-    transition: 0.5s;
-    border: 1px solid #03e9f4;
-}
-
-
-.submit-btn:hover {
-    background: #03e9f4;
-    color: #fff;
-    /* box-shadow: 0 0 5px #03e9f4,
-        /* 0 0 25px #03e9f4,
-        0 0 50px #03e9f4,
-        0 0 100px #03e9f4; */
-}
-
-*/ .signup-link-inline {
-    color: #03e9f4;
-    font-size: 14px;
-    text-decoration: none;
-}
-
-.signup-link-inline:hover {
-    text-decoration: underline;
 }
 
 .error-message {
     color: #ff4d4d;
     font-size: 12px;
-    margin-top: -20px;
-    margin-bottom: 20px;
+    margin-top: -10px;
+    margin-bottom: 15px;
     display: none;
 }
+
+/* 📱 شاشات صغيرة (موبايل) */
+@media (max-width: 480px) {
+    .login-box {
+        padding: 20px 15px;
+    }
+    .login-box h2 {
+        font-size: 1.2rem;
+    }
+    a, .submit-btn {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+}
+
